@@ -1,0 +1,3 @@
+sqlmap task status
+
+not running

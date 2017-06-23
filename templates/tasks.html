@@ -1,0 +1,36 @@
+<html>
+<head>
+	<title>tasks table</title>
+	<style type="text/css">
+	.tasks{
+		margin-top: 50px;
+		border-bottom: 1px solid #999;
+	}
+	.tasks_button{
+		margin-bottom: 50px;
+	}
+	a {color:#666;text-decoration:none}  /* 重置链接a标签 */  
+	a:active, a:hover {text-decoration:none}   /* 重置链接a标签的鼠标滑动效果 */  
+	</style>
+</head>
+<body>
+	<h1>任务列表</h1>
+	<a href="/">创建任务</a>
+	{% for task in tasks %}
+	<form action="/task/report" method="post">
+		<div class="tasks">
+			<div class="tasks_info">
+				<input type='hidden' name="taskid" value={{ task.task_id }}>
+				任务id: <p>{{ task.task_id }}</p>
+				目标: <p>{{ task.target }}</p>
+			</div>
+			<div class="tasks_button">
+				<button type="submit"><a>查询报告</a></button>
+				<button><a href="revoke">删除任务</a></button>
+			</div>
+		</div>
+	</form>
+	{% endfor %}
+	
+</body>
+</html>
